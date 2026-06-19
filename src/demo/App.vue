@@ -310,7 +310,7 @@ const swatches = ['--ft-brand', '--ft-success', '--ft-error', '--ft-info', '--ft
       <FacetStepper :steps="steps" />
     </template>
 
-    <div v-if="drawerLoading" class="stack">
+    <div v-if="drawerLoading" class="drawer-body">
       <div class="stat-strip">
         <FacetSkeleton v-for="n in 3" :key="n" height="58px" radius="var(--ft-radius-sm)" />
       </div>
@@ -318,7 +318,7 @@ const swatches = ['--ft-brand', '--ft-success', '--ft-error', '--ft-info', '--ft
       <FacetSkeleton height="150px" />
     </div>
 
-    <div v-else class="stack">
+    <div v-else class="drawer-body">
       <div class="stat-strip">
         <div class="stat"><span class="stat__label">CCBs</span><strong class="stat__value">24</strong></div>
         <div class="stat"><span class="stat__label">Face</span><strong class="stat__value">R$ 1.2M</strong></div>
@@ -338,7 +338,7 @@ const swatches = ['--ft-brand', '--ft-success', '--ft-error', '--ft-info', '--ft
         </div>
       </FacetAlert>
 
-      <FacetCard title="Details">
+      <FacetCard title="Details" flat>
         <dl class="meta">
           <div v-for="m in meta" :key="m.k" class="meta__row">
             <dt>{{ m.k }}</dt>
@@ -364,7 +364,7 @@ const swatches = ['--ft-brand', '--ft-success', '--ft-error', '--ft-info', '--ft
         </FacetTable>
       </div>
 
-      <FacetCard title="Lifecycle">
+      <FacetCard title="Lifecycle" flat>
         <FacetTimeline :events="events" />
       </FacetCard>
     </div>
@@ -404,12 +404,13 @@ const swatches = ['--ft-brand', '--ft-success', '--ft-error', '--ft-info', '--ft
 .hero__stepper { margin-top: 30px; }
 
 .wrap { max-width: 980px; margin: 0 auto; padding: 8px 28px 80px; }
-section { margin-top: 44px; }
+.wrap > section { margin-top: 44px; }
 .lead { font-family: var(--ft-font-display); font-size: 12.5px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.045em; color: var(--ft-text-soft); margin: 0 0 18px; }
 .row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
 .ft-row-actions { display: inline-flex; gap: 2px; justify-content: flex-end; }
 
 /* Details-drawer composition */
+.drawer-body { display: flex; flex-direction: column; gap: var(--ft-space-5); }
 .drawer-copy {
   width: 30px; height: 30px; border: none; border-radius: var(--ft-radius-sm);
   background: rgba(255, 255, 255, 0.16); color: #fff; cursor: pointer; display: grid; place-items: center;

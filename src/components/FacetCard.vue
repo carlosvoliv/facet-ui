@@ -1,11 +1,12 @@
 <script setup>
 defineProps({
   title: { type: String, default: '' },
+  flat: { type: Boolean, default: false }, // border only, no elevation (dense panels)
 })
 </script>
 
 <template>
-  <section class="ft-card">
+  <section class="ft-card" :class="{ 'ft-card--flat': flat }">
     <header v-if="title || $slots.header" class="ft-card__head">
       <slot name="header"><h3 class="ft-card__title">{{ title }}</h3></slot>
     </header>
@@ -20,6 +21,9 @@ defineProps({
   border-radius: var(--ft-radius);
   box-shadow: var(--ft-card-shadow);
   overflow: hidden;
+}
+.ft-card--flat {
+  box-shadow: none;
 }
 .ft-card__head {
   padding: 14px 18px;
