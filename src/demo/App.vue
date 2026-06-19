@@ -159,7 +159,7 @@ const swatches = ['--ft-brand', '--ft-success', '--ft-error', '--ft-info', '--ft
           <FacetChip :variant="value" size="sm">{{ value === 'ok' ? 'settled' : value === 'err' ? 'rejected' : 'pending' }}</FacetChip>
         </template>
         <template #cell-actions>
-          <div class="row-actions">
+          <div class="ft-row-actions">
             <FacetIconButton name="eye" title="Details" />
             <FacetIconButton name="edit" title="Edit" />
             <FacetIconButton name="trash" variant="danger" title="Delete" />
@@ -228,7 +228,7 @@ const swatches = ['--ft-brand', '--ft-success', '--ft-error', '--ft-info', '--ft
 section { margin-top: 44px; }
 .lead { font-family: var(--ft-font-display); font-size: 12.5px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.045em; color: var(--ft-text-soft); margin: 0 0 18px; }
 .row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
-.row-actions { display: inline-flex; gap: 2px; justify-content: flex-end; }
+.ft-row-actions { display: inline-flex; gap: 2px; justify-content: flex-end; }
 .stack { display: flex; flex-direction: column; gap: 14px; }
 .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
 .cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 16px; }

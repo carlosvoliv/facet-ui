@@ -65,4 +65,16 @@ defineProps({
 }
 .ft-table tbody tr:last-child td { border-bottom: none; }
 .ft-table tbody tr:hover { background: var(--ft-surface-1); }
+
+/* Row actions: hidden until the row is hovered or keyboard-focused. */
+.ft-table tbody td :deep(.ft-row-actions) {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s ease;
+}
+.ft-table tbody tr:hover :deep(.ft-row-actions),
+.ft-table tbody tr:focus-within :deep(.ft-row-actions) {
+  opacity: 1;
+  pointer-events: auto;
+}
 </style>
