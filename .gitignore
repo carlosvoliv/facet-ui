@@ -1,5 +1,7 @@
 node_modules
 dist
+storybook-static
 *.local
 .DS_Store
 .vite
+*storybook.log

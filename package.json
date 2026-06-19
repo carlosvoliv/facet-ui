@@ -4,7 +4,10 @@
   "description": "A small, opinionated Vue 3 design system: a single source-of-truth token layer with full dark mode, plus a handful of polished, accessible components.",
   "type": "module",
   "license": "MIT",
-  "files": ["dist", "src"],
+  "files": [
+    "dist",
+    "src"
+  ],
   "main": "./dist/facet-ui.umd.cjs",
   "module": "./dist/facet-ui.js",
   "types": "./src/index.d.ts",
@@ -18,19 +21,27 @@
     "./tokens.css": "./src/styles/tokens.css",
     "./themes.css": "./src/styles/themes.css"
   },
-  "sideEffects": ["**/*.css"],
+  "sideEffects": [
+    "**/*.css"
+  ],
   "scripts": {
     "dev": "vite",
     "build:themes": "node scripts/build-themes.mjs",
     "build": "vite build",
     "build:lib": "node scripts/build-themes.mjs && vite build --mode lib",
-    "preview": "vite preview --port 4173"
+    "preview": "vite preview --port 4173",
+    "storybook": "storybook dev -p 6006 --no-open",
+    "build-storybook": "storybook build"
   },
   "peerDependencies": {
     "vue": "^3.4.0"
   },
   "devDependencies": {
+    "@storybook/addon-essentials": "^8.6.14",
+    "@storybook/vue3": "^8.6.18",
+    "@storybook/vue3-vite": "^8.6.18",
     "@vitejs/plugin-vue": "^5.1.4",
+    "storybook": "^8.6.18",
     "vite": "^5.4.10",
     "vue": "^3.5.12"
   },
