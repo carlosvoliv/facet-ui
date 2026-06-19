@@ -42,11 +42,16 @@ npm run build:themes
 
 ## Use it in an app
 
-```js
-import { FacetButton, FacetKpiCard, FacetChip, FacetStepper } from 'facet-ui'
-import 'facet-ui/src/styles/tokens.css'
-import 'facet-ui/src/styles/themes.css'
+```bash
+npm install facet-ui   # peer dep: vue ^3.4
 ```
+
+```js
+import { FacetButton, FacetKpiCard, FacetDrawer, FacetTable } from 'facet-ui'
+import 'facet-ui/styles' // tokens + themes + component styles
+```
+
+Build the package yourself with `npm run build:lib` (outputs ESM + UMD + CSS to `dist/`).
 
 ```vue
 <FacetKpiCard label="Commits" :value="538" sub="across 2 repos" accent="total" />

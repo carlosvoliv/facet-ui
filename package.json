@@ -4,10 +4,26 @@
   "description": "A small, opinionated Vue 3 design system: a single source-of-truth token layer with full dark mode, plus a handful of polished, accessible components.",
   "type": "module",
   "license": "MIT",
+  "files": ["dist", "src"],
+  "main": "./dist/facet-ui.umd.cjs",
+  "module": "./dist/facet-ui.js",
+  "types": "./src/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./src/index.d.ts",
+      "import": "./dist/facet-ui.js",
+      "require": "./dist/facet-ui.umd.cjs"
+    },
+    "./styles": "./dist/facet-ui.css",
+    "./tokens.css": "./src/styles/tokens.css",
+    "./themes.css": "./src/styles/themes.css"
+  },
+  "sideEffects": ["**/*.css"],
   "scripts": {
     "dev": "vite",
     "build:themes": "node scripts/build-themes.mjs",
     "build": "vite build",
+    "build:lib": "node scripts/build-themes.mjs && vite build --mode lib",
     "preview": "vite preview --port 4173"
   },
   "peerDependencies": {
