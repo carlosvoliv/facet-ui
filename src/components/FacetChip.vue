@@ -20,12 +20,13 @@ const iconName = () => props.icon || DEFAULT_ICON[props.variant]
 .ft-chip {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  font-family: var(--ft-font-mono);
-  font-size: 12px;
-  font-weight: 500;
-  padding: 4px 11px;
-  border-radius: 999px;
+  gap: 5px;
+  font-family: var(--ft-font-body);
+  font-size: 12.5px;
+  font-weight: 550;
+  letter-spacing: -0.005em;
+  padding: 4px 10px;
+  border-radius: 8px;
   border: 1px solid transparent;
 }
 .ft-chip--ok { background: var(--ft-chip-ok-bg); color: var(--ft-chip-ok-fg); border-color: var(--ft-chip-ok-line); }

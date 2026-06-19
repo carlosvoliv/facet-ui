@@ -86,7 +86,7 @@ onBeforeUnmount(() => window.removeEventListener('keydown', onKey))
   background: var(--ft-surface-base);
   color: var(--ft-text);
   border: 1px solid var(--ft-border);
-  border-radius: 16px;
+  border-radius: 18px;
   box-shadow: var(--ft-card-shadow);
   overflow: hidden;
 }

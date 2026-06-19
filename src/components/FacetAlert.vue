@@ -21,8 +21,8 @@ const icon = { success: 'check', error: 'x', info: 'info', warn: 'alert' }
 .ft-alert {
   display: flex;
   gap: 12px;
-  padding: 12px 14px;
-  border-radius: 11px;
+  padding: 13px 15px;
+  border-radius: 14px;
   border: 1px solid;
   font-size: 14px;
 }

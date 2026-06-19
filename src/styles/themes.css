@@ -57,7 +57,7 @@
   --ft-chip-grey-bg: rgba(88, 91, 112, 0.16);
   --ft-chip-grey-fg: #bac2de;
   --ft-chip-grey-line: rgba(88, 91, 112, 0.4);
-  --ft-card-shadow: 0 1px 2px rgba(0,0,0,0.2), 0 18px 44px -14px rgba(0,0,0,0.55);
+  --ft-card-shadow: 0 1px 1px rgba(0,0,0,0.2), 0 12px 30px -12px rgba(0,0,0,0.4), 0 34px 64px -28px rgba(0,0,0,0.6);
 }
 
 [data-theme='catppuccin-latte'] {
@@ -116,7 +116,7 @@
   --ft-chip-grey-bg: rgba(172, 176, 190, 0.16);
   --ft-chip-grey-fg: #5c5f77;
   --ft-chip-grey-line: rgba(172, 176, 190, 0.4);
-  --ft-card-shadow: 0 1px 2px rgba(16,24,40,0.03), 0 16px 40px -12px rgba(16,24,40,0.12);
+  --ft-card-shadow: 0 1px 1px rgba(16,24,40,0.02), 0 10px 28px -12px rgba(16,24,40,0.10), 0 30px 60px -28px rgba(16,24,40,0.16);
 }
 
 [data-theme='ethereal'] {
@@ -175,7 +175,7 @@
   --ft-chip-grey-bg: rgba(109, 125, 182, 0.16);
   --ft-chip-grey-fg: #f99957;
   --ft-chip-grey-line: rgba(109, 125, 182, 0.4);
-  --ft-card-shadow: 0 1px 2px rgba(0,0,0,0.2), 0 18px 44px -14px rgba(0,0,0,0.55);
+  --ft-card-shadow: 0 1px 1px rgba(0,0,0,0.2), 0 12px 30px -12px rgba(0,0,0,0.4), 0 34px 64px -28px rgba(0,0,0,0.6);
 }
 
 [data-theme='everforest'] {
@@ -234,7 +234,7 @@
   --ft-chip-grey-bg: rgba(71, 82, 88, 0.16);
   --ft-chip-grey-fg: #d3c6aa;
   --ft-chip-grey-line: rgba(71, 82, 88, 0.4);
-  --ft-card-shadow: 0 1px 2px rgba(0,0,0,0.2), 0 18px 44px -14px rgba(0,0,0,0.55);
+  --ft-card-shadow: 0 1px 1px rgba(0,0,0,0.2), 0 12px 30px -12px rgba(0,0,0,0.4), 0 34px 64px -28px rgba(0,0,0,0.6);
 }
 
 [data-theme='flexoki-light'] {
@@ -293,7 +293,7 @@
   --ft-chip-grey-bg: rgba(16, 15, 15, 0.16);
   --ft-chip-grey-fg: #b7b5ac;
   --ft-chip-grey-line: rgba(16, 15, 15, 0.4);
-  --ft-card-shadow: 0 1px 2px rgba(16,24,40,0.03), 0 16px 40px -12px rgba(16,24,40,0.12);
+  --ft-card-shadow: 0 1px 1px rgba(16,24,40,0.02), 0 10px 28px -12px rgba(16,24,40,0.10), 0 30px 60px -28px rgba(16,24,40,0.16);
 }
 
 [data-theme='gruvbox'] {
@@ -352,7 +352,7 @@
   --ft-chip-grey-bg: rgba(60, 56, 54, 0.16);
   --ft-chip-grey-fg: #d4be98;
   --ft-chip-grey-line: rgba(60, 56, 54, 0.4);
-  --ft-card-shadow: 0 1px 2px rgba(0,0,0,0.2), 0 18px 44px -14px rgba(0,0,0,0.55);
+  --ft-card-shadow: 0 1px 1px rgba(0,0,0,0.2), 0 12px 30px -12px rgba(0,0,0,0.4), 0 34px 64px -28px rgba(0,0,0,0.6);
 }
 
 [data-theme='hackerman'] {
@@ -411,7 +411,7 @@
   --ft-chip-grey-bg: rgba(106, 110, 149, 0.16);
   --ft-chip-grey-fg: #85e1fb;
   --ft-chip-grey-line: rgba(106, 110, 149, 0.4);
-  --ft-card-shadow: 0 1px 2px rgba(0,0,0,0.2), 0 18px 44px -14px rgba(0,0,0,0.55);
+  --ft-card-shadow: 0 1px 1px rgba(0,0,0,0.2), 0 12px 30px -12px rgba(0,0,0,0.4), 0 34px 64px -28px rgba(0,0,0,0.6);
 }
 
 [data-theme='kanagawa'] {
@@ -470,7 +470,7 @@
   --ft-chip-grey-bg: rgba(114, 113, 105, 0.16);
   --ft-chip-grey-fg: #c8c093;
   --ft-chip-grey-line: rgba(114, 113, 105, 0.4);
-  --ft-card-shadow: 0 1px 2px rgba(0,0,0,0.2), 0 18px 44px -14px rgba(0,0,0,0.55);
+  --ft-card-shadow: 0 1px 1px rgba(0,0,0,0.2), 0 12px 30px -12px rgba(0,0,0,0.4), 0 34px 64px -28px rgba(0,0,0,0.6);
 }
 
 [data-theme='lumon'] {
@@ -529,7 +529,7 @@
   --ft-chip-grey-bg: rgba(48, 72, 96, 0.16);
   --ft-chip-grey-fg: #d6e2ee;
   --ft-chip-grey-line: rgba(48, 72, 96, 0.4);
-  --ft-card-shadow: 0 1px 2px rgba(0,0,0,0.2), 0 18px 44px -14px rgba(0,0,0,0.55);
+  --ft-card-shadow: 0 1px 1px rgba(0,0,0,0.2), 0 12px 30px -12px rgba(0,0,0,0.4), 0 34px 64px -28px rgba(0,0,0,0.6);
 }
 
 [data-theme='matte-black'] {
@@ -588,7 +588,7 @@
   --ft-chip-grey-bg: rgba(138, 138, 141, 0.16);
   --ft-chip-grey-fg: #bebebe;
   --ft-chip-grey-line: rgba(138, 138, 141, 0.4);
-  --ft-card-shadow: 0 1px 2px rgba(0,0,0,0.2), 0 18px 44px -14px rgba(0,0,0,0.55);
+  --ft-card-shadow: 0 1px 1px rgba(0,0,0,0.2), 0 12px 30px -12px rgba(0,0,0,0.4), 0 34px 64px -28px rgba(0,0,0,0.6);
 }
 
 [data-theme='miasma'] {
@@ -647,7 +647,7 @@
   --ft-chip-grey-bg: rgba(102, 102, 102, 0.16);
   --ft-chip-grey-fg: #d7c483;
   --ft-chip-grey-line: rgba(102, 102, 102, 0.4);
-  --ft-card-shadow: 0 1px 2px rgba(0,0,0,0.2), 0 18px 44px -14px rgba(0,0,0,0.55);
+  --ft-card-shadow: 0 1px 1px rgba(0,0,0,0.2), 0 12px 30px -12px rgba(0,0,0,0.4), 0 34px 64px -28px rgba(0,0,0,0.6);
 }
 
 [data-theme='nord'] {
@@ -706,7 +706,7 @@
   --ft-chip-grey-bg: rgba(76, 86, 106, 0.16);
   --ft-chip-grey-fg: #e5e9f0;
   --ft-chip-grey-line: rgba(76, 86, 106, 0.4);
-  --ft-card-shadow: 0 1px 2px rgba(0,0,0,0.2), 0 18px 44px -14px rgba(0,0,0,0.55);
+  --ft-card-shadow: 0 1px 1px rgba(0,0,0,0.2), 0 12px 30px -12px rgba(0,0,0,0.4), 0 34px 64px -28px rgba(0,0,0,0.6);
 }
 
 [data-theme='osaka-jade'] {
@@ -765,7 +765,7 @@
   --ft-chip-grey-bg: rgba(83, 104, 91, 0.16);
   --ft-chip-grey-fg: #f6f5dd;
   --ft-chip-grey-line: rgba(83, 104, 91, 0.4);
-  --ft-card-shadow: 0 1px 2px rgba(0,0,0,0.2), 0 18px 44px -14px rgba(0,0,0,0.55);
+  --ft-card-shadow: 0 1px 1px rgba(0,0,0,0.2), 0 12px 30px -12px rgba(0,0,0,0.4), 0 34px 64px -28px rgba(0,0,0,0.6);
 }
 
 [data-theme='retro-82'] {
@@ -824,7 +824,7 @@
   --ft-chip-grey-bg: rgba(19, 78, 90, 0.16);
   --ft-chip-grey-fg: #a7c9c6;
   --ft-chip-grey-line: rgba(19, 78, 90, 0.4);
-  --ft-card-shadow: 0 1px 2px rgba(0,0,0,0.2), 0 18px 44px -14px rgba(0,0,0,0.55);
+  --ft-card-shadow: 0 1px 1px rgba(0,0,0,0.2), 0 12px 30px -12px rgba(0,0,0,0.4), 0 34px 64px -28px rgba(0,0,0,0.6);
 }
 
 [data-theme='ristretto'] {
@@ -883,7 +883,7 @@
   --ft-chip-grey-bg: rgba(148, 138, 139, 0.16);
   --ft-chip-grey-fg: #e6d9db;
   --ft-chip-grey-line: rgba(148, 138, 139, 0.4);
-  --ft-card-shadow: 0 1px 2px rgba(0,0,0,0.2), 0 18px 44px -14px rgba(0,0,0,0.55);
+  --ft-card-shadow: 0 1px 1px rgba(0,0,0,0.2), 0 12px 30px -12px rgba(0,0,0,0.4), 0 34px 64px -28px rgba(0,0,0,0.6);
 }
 
 [data-theme='rose-pine'] {
@@ -942,7 +942,7 @@
   --ft-chip-grey-bg: rgba(152, 147, 165, 0.16);
   --ft-chip-grey-fg: #575279;
   --ft-chip-grey-line: rgba(152, 147, 165, 0.4);
-  --ft-card-shadow: 0 1px 2px rgba(16,24,40,0.03), 0 16px 40px -12px rgba(16,24,40,0.12);
+  --ft-card-shadow: 0 1px 1px rgba(16,24,40,0.02), 0 10px 28px -12px rgba(16,24,40,0.10), 0 30px 60px -28px rgba(16,24,40,0.16);
 }
 
 [data-theme='tokyo-night'] {
@@ -1001,7 +1001,7 @@
   --ft-chip-grey-bg: rgba(68, 75, 106, 0.16);
   --ft-chip-grey-fg: #787c99;
   --ft-chip-grey-line: rgba(68, 75, 106, 0.4);
-  --ft-card-shadow: 0 1px 2px rgba(0,0,0,0.2), 0 18px 44px -14px rgba(0,0,0,0.55);
+  --ft-card-shadow: 0 1px 1px rgba(0,0,0,0.2), 0 12px 30px -12px rgba(0,0,0,0.4), 0 34px 64px -28px rgba(0,0,0,0.6);
 }
 
 [data-theme='vantablack'] {
@@ -1060,7 +1060,7 @@
   --ft-chip-grey-bg: rgba(92, 92, 92, 0.16);
   --ft-chip-grey-fg: #ececec;
   --ft-chip-grey-line: rgba(92, 92, 92, 0.4);
-  --ft-card-shadow: 0 1px 2px rgba(0,0,0,0.2), 0 18px 44px -14px rgba(0,0,0,0.55);
+  --ft-card-shadow: 0 1px 1px rgba(0,0,0,0.2), 0 12px 30px -12px rgba(0,0,0,0.4), 0 34px 64px -28px rgba(0,0,0,0.6);
 }
 
 [data-theme='white'] {
@@ -1119,5 +1119,5 @@
   --ft-chip-grey-bg: rgba(192, 192, 192, 0.16);
   --ft-chip-grey-fg: #000000;
   --ft-chip-grey-line: rgba(192, 192, 192, 0.4);
-  --ft-card-shadow: 0 1px 2px rgba(16,24,40,0.03), 0 16px 40px -12px rgba(16,24,40,0.12);
+  --ft-card-shadow: 0 1px 1px rgba(16,24,40,0.02), 0 10px 28px -12px rgba(16,24,40,0.10), 0 30px 60px -28px rgba(16,24,40,0.16);
 }

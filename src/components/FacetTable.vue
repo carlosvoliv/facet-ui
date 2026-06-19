@@ -50,11 +50,10 @@ defineProps({
   color: var(--ft-text);
 }
 .ft-table thead th {
-  font-family: var(--ft-font-mono);
-  font-size: 11.5px;
+  font-family: var(--ft-font-body);
+  font-size: 12px;
   font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.02em;
   color: var(--ft-text-soft);
   background: var(--ft-surface-1);
   padding: 12px 16px;

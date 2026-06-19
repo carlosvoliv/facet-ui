@@ -22,8 +22,8 @@ function tokens(c, dark) {
   const brand = c.accent || c.color4
   const brandStrong = c.color12 || c.color4 || brand
   const shadow = dark
-    ? '0 1px 2px rgba(0,0,0,0.2), 0 18px 44px -14px rgba(0,0,0,0.55)'
-    : '0 1px 2px rgba(16,24,40,0.03), 0 16px 40px -12px rgba(16,24,40,0.12)'
+    ? '0 1px 1px rgba(0,0,0,0.2), 0 12px 30px -12px rgba(0,0,0,0.4), 0 34px 64px -28px rgba(0,0,0,0.6)'
+    : '0 1px 1px rgba(16,24,40,0.02), 0 10px 28px -12px rgba(16,24,40,0.10), 0 30px 60px -28px rgba(16,24,40,0.16)'
   return {
     '--ft-brand': brand,
     '--ft-brand-hover': c.color4 || brand,

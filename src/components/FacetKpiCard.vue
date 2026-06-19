@@ -27,12 +27,16 @@ defineProps({
   border-radius: var(--ft-radius);
   padding: 16px 20px 20px;
   box-shadow: var(--ft-card-shadow);
-  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.3s ease, box-shadow 0.35s ease, border-color 0.25s ease;
 }
 .ft-kpi:hover {
-  transform: translateY(-2px);
+  transform: translateY(-3px);
+  /* thin accent hairline + tinted smoke (a soft, blurred glow), no hard ring */
   border-color: var(--accent);
-  box-shadow: 0 0 0 3px var(--ring), var(--ft-card-shadow);
+  box-shadow:
+    0 12px 32px -12px var(--ring),
+    0 34px 64px -26px var(--ring),
+    var(--ft-card-shadow);
 }
 .ft-kpi__top {
   display: flex;

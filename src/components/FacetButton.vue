@@ -16,10 +16,11 @@ defineProps({
 .ft-btn {
   font-family: var(--ft-font-body);
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 590;
+  letter-spacing: -0.01em;
   line-height: 1;
-  padding: 10px 18px;
-  border-radius: 9px;
+  padding: 10px 20px;
+  border-radius: 999px;
   border: 1px solid transparent;
   cursor: pointer;
   transition: background 0.18s ease, border-color 0.18s ease, transform 0.1s ease;

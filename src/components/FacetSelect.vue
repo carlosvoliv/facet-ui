@@ -37,8 +37,8 @@ defineEmits(['update:modelValue'])
   color: var(--ft-text);
   background: var(--ft-surface-base);
   border: 1px solid var(--ft-border);
-  border-radius: 9px;
-  padding: 10px 34px 10px 12px;
+  border-radius: 11px;
+  padding: 10px 34px 10px 13px;
   cursor: pointer;
   transition: border-color 0.15s ease, box-shadow 0.15s ease;
 }
