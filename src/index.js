@@ -4,6 +4,7 @@ import './styles/themes.css'
 
 export { default as FacetButton } from './components/FacetButton.vue'
 export { default as FacetIcon } from './components/FacetIcon.vue'
+export { default as FacetIconButton } from './components/FacetIconButton.vue'
 export { default as FacetKpiCard } from './components/FacetKpiCard.vue'
 export { default as FacetChip } from './components/FacetChip.vue'
 export { default as FacetStepper } from './components/FacetStepper.vue'

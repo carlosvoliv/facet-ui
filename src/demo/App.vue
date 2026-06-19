@@ -3,6 +3,7 @@ import { ref } from 'vue'
 import themes from '../themes.json'
 import FacetButton from '../components/FacetButton.vue'
 import FacetIcon from '../components/FacetIcon.vue'
+import FacetIconButton from '../components/FacetIconButton.vue'
 import FacetKpiCard from '../components/FacetKpiCard.vue'
 import FacetChip from '../components/FacetChip.vue'
 import FacetStepper from '../components/FacetStepper.vue'
@@ -43,6 +44,7 @@ const tableCols = [
   { key: 'name', label: 'Batch' },
   { key: 'status', label: 'Status' },
   { key: 'value', label: 'Value', align: 'right' },
+  { key: 'actions', label: '', align: 'right' },
 ]
 const tableRows = [
   { id: '#018', name: 'Receivables A', status: 'ok', value: 'R$ 1.2M' },
@@ -154,7 +156,14 @@ const swatches = ['--ft-brand', '--ft-success', '--ft-error', '--ft-info', '--ft
       <h2 class="lead">Table</h2>
       <FacetTable :columns="tableCols" :rows="tableRows">
         <template #cell-status="{ value }">
-          <FacetChip :variant="value">{{ value === 'ok' ? 'settled' : value === 'err' ? 'rejected' : 'pending' }}</FacetChip>
+          <FacetChip :variant="value" size="sm">{{ value === 'ok' ? 'settled' : value === 'err' ? 'rejected' : 'pending' }}</FacetChip>
+        </template>
+        <template #cell-actions>
+          <div class="row-actions">
+            <FacetIconButton name="eye" title="Details" />
+            <FacetIconButton name="edit" title="Edit" />
+            <FacetIconButton name="trash" variant="danger" title="Delete" />
+          </div>
         </template>
       </FacetTable>
     </section>
@@ -219,6 +228,7 @@ const swatches = ['--ft-brand', '--ft-success', '--ft-error', '--ft-info', '--ft
 section { margin-top: 44px; }
 .lead { font-family: var(--ft-font-display); font-size: 12.5px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.045em; color: var(--ft-text-soft); margin: 0 0 18px; }
 .row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.row-actions { display: inline-flex; gap: 2px; justify-content: flex-end; }
 .stack { display: flex; flex-direction: column; gap: 14px; }
 .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
 .cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 16px; }
