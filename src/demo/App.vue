@@ -69,6 +69,49 @@ const tab = ref('overview')
 const agree = ref(true)
 const plan = ref('pro')
 
+// ── Detail drawer demo state ────────────────────────────────────────────────
+const drawerLoading = ref(false)
+const copied = ref(false)
+const syncing = ref(false)
+const connected = ref(false)
+function openDrawer() {
+  drawerOpen.value = true
+  connected.value = false
+  drawerLoading.value = true
+  setTimeout(() => (drawerLoading.value = false), 900)
+}
+function copyId() {
+  copied.value = true
+  setTimeout(() => (copied.value = false), 1500)
+}
+function checkStatus() {
+  if (syncing.value) return
+  syncing.value = true
+  setTimeout(() => {
+    syncing.value = false
+    connected.value = true
+  }, 1300)
+}
+const meta = [
+  { k: 'Consignante', v: 'Acme Payroll Co.' },
+  { k: 'Document', v: '***.***.789-04' },
+  { k: 'Created by', v: 'Ana Souza' },
+  { k: 'Rate', v: '1.89% a.m.' },
+]
+const ccbCols = [
+  { key: 'ccb', label: 'CCB' },
+  { key: 'cpf', label: 'Holder' },
+  { key: 'status', label: 'Status' },
+  { key: 'value', label: 'Value', align: 'right' },
+  { key: 'actions', label: '', align: 'right' },
+]
+const ccbRows = [
+  { ccb: '0001', cpf: '***.***.221-10', status: 'ok', value: 'R$ 52k' },
+  { ccb: '0002', cpf: '***.***.884-32', status: 'ok', value: 'R$ 41k' },
+  { ccb: '0003', cpf: '***.***.097-55', status: 'blue', value: 'R$ 38k' },
+  { ccb: '0004', cpf: '***.***.640-21', status: 'err', value: 'R$ 27k' },
+]
+
 const swatches = ['--ft-brand', '--ft-success', '--ft-error', '--ft-info', '--ft-warn', '--ft-kpi-accent']
 </script>
 
@@ -215,8 +258,8 @@ const swatches = ['--ft-brand', '--ft-success', '--ft-error', '--ft-info', '--ft
             ]"
           />
           <div class="row">
-            <FacetTooltip label="Opens a side panel">
-              <FacetButton variant="ghost" @click="drawerOpen = true">Open drawer</FacetButton>
+            <FacetTooltip label="Opens a rich details panel">
+              <FacetButton variant="ghost" @click="openDrawer()">Open details drawer</FacetButton>
             </FacetTooltip>
             <FacetTooltip label="Tooltip on a chip" placement="bottom">
               <FacetChip variant="blue">hover me</FacetChip>
@@ -255,14 +298,81 @@ const swatches = ['--ft-brand', '--ft-success', '--ft-error', '--ft-info', '--ft
     </p>
   </FacetModal>
 
-  <FacetDrawer v-model="drawerOpen" title="Batch #018">
-    <div class="stack">
-      <FacetAlert variant="info">Receivables batch details and registration status.</FacetAlert>
-      <FacetTimeline :events="events" />
+  <FacetDrawer v-model="drawerOpen" title="Batch #018" subtitle="Acme Payroll · updated 2h ago" width="540px">
+    <template #header-actions>
+      <FacetTooltip :label="copied ? 'Copied!' : 'Copy ID'" placement="bottom">
+        <button class="drawer-copy" aria-label="Copy ID" @click="copyId()">
+          <FacetIcon :name="copied ? 'check' : 'copy'" :size="15" />
+        </button>
+      </FacetTooltip>
+    </template>
+    <template #header-extra>
+      <FacetStepper :steps="steps" />
+    </template>
+
+    <div v-if="drawerLoading" class="stack">
+      <div class="stat-strip">
+        <FacetSkeleton v-for="n in 3" :key="n" height="58px" radius="var(--ft-radius-sm)" />
+      </div>
+      <FacetSkeleton height="86px" />
+      <FacetSkeleton height="150px" />
     </div>
+
+    <div v-else class="stack">
+      <div class="stat-strip">
+        <div class="stat"><span class="stat__label">CCBs</span><strong class="stat__value">24</strong></div>
+        <div class="stat"><span class="stat__label">Face</span><strong class="stat__value">R$ 1.2M</strong></div>
+        <div class="stat"><span class="stat__label">Net</span><strong class="stat__value">R$ 980k</strong></div>
+      </div>
+
+      <FacetAlert variant="info" title="Registry integration">
+        <div class="banner-row">
+          <span>{{ connected ? 'Connected — status is live.' : 'Check the current registration status.' }}</span>
+          <FacetButton variant="ghost" :disabled="syncing || connected" @click="checkStatus()">
+            <span class="banner-btn">
+              <FacetSpinner v-if="syncing" :size="14" />
+              <FacetIcon v-else :name="connected ? 'check' : 'refresh'" :size="14" />
+              {{ syncing ? 'Checking…' : connected ? 'Connected' : 'Check status' }}
+            </span>
+          </FacetButton>
+        </div>
+      </FacetAlert>
+
+      <FacetCard title="Details">
+        <dl class="meta">
+          <div v-for="m in meta" :key="m.k" class="meta__row">
+            <dt>{{ m.k }}</dt>
+            <dd>{{ m.v }}</dd>
+          </div>
+        </dl>
+      </FacetCard>
+
+      <div>
+        <h4 class="drawer-h4">Cédulas (CCBs)</h4>
+        <FacetTable :columns="ccbCols" :rows="ccbRows">
+          <template #cell-status="{ value }">
+            <FacetChip :variant="value" size="sm">
+              {{ value === 'ok' ? 'settled' : value === 'err' ? 'rejected' : 'pending' }}
+            </FacetChip>
+          </template>
+          <template #cell-actions>
+            <div class="ft-row-actions">
+              <FacetIconButton name="eye" title="Details" />
+              <FacetIconButton name="download" title="Download" />
+            </div>
+          </template>
+        </FacetTable>
+      </div>
+
+      <FacetCard title="Lifecycle">
+        <FacetTimeline :events="events" />
+      </FacetCard>
+    </div>
+
     <template #footer>
       <FacetButton variant="ghost" @click="drawerOpen = false">Close</FacetButton>
-      <FacetButton variant="primary" @click="drawerOpen = false">Register</FacetButton>
+      <FacetButton variant="ghost">Reprocess</FacetButton>
+      <FacetButton variant="primary" @click="drawerOpen = false">Register all</FacetButton>
     </template>
   </FacetDrawer>
 </template>
@@ -298,6 +408,29 @@ section { margin-top: 44px; }
 .lead { font-family: var(--ft-font-display); font-size: 12.5px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.045em; color: var(--ft-text-soft); margin: 0 0 18px; }
 .row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
 .ft-row-actions { display: inline-flex; gap: 2px; justify-content: flex-end; }
+
+/* Details-drawer composition */
+.drawer-copy {
+  width: 30px; height: 30px; border: none; border-radius: var(--ft-radius-sm);
+  background: rgba(255, 255, 255, 0.16); color: #fff; cursor: pointer; display: grid; place-items: center;
+  transition: background var(--ft-dur) var(--ft-ease);
+}
+.drawer-copy:hover { background: rgba(255, 255, 255, 0.28); }
+.stat-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--ft-space-3); }
+.stat {
+  background: var(--ft-surface-1); border: 1px solid var(--ft-border);
+  border-radius: var(--ft-radius-sm); padding: var(--ft-space-3);
+  display: flex; flex-direction: column; gap: 2px;
+}
+.stat__label { font-size: var(--ft-text-xs); color: var(--ft-text-soft); text-transform: uppercase; letter-spacing: 0.05em; }
+.stat__value { font-family: var(--ft-font-display); font-size: var(--ft-text-xl); font-weight: var(--ft-weight-bold); color: var(--ft-text); }
+.banner-row { display: flex; align-items: center; justify-content: space-between; gap: var(--ft-space-3); }
+.banner-btn { display: inline-flex; align-items: center; gap: 6px; }
+.meta { margin: 0; display: flex; flex-direction: column; gap: var(--ft-space-2); }
+.meta__row { display: flex; justify-content: space-between; gap: var(--ft-space-4); font-size: var(--ft-text-base); }
+.meta__row dt { color: var(--ft-text-soft); }
+.meta__row dd { margin: 0; font-weight: var(--ft-weight-medium); color: var(--ft-text); }
+.drawer-h4 { margin: 0 0 var(--ft-space-3); font-size: var(--ft-text-sm); font-weight: var(--ft-weight-semibold); color: var(--ft-text-soft); text-transform: uppercase; letter-spacing: 0.05em; }
 .stack { display: flex; flex-direction: column; gap: 14px; }
 .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
 .cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 16px; }

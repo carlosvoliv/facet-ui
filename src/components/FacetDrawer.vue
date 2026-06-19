@@ -4,6 +4,7 @@ import { watch, onBeforeUnmount } from 'vue'
 const props = defineProps({
   modelValue: { type: Boolean, required: true },
   title: { type: String, default: '' },
+  subtitle: { type: String, default: '' },
   side: { type: String, default: 'right' }, // right | left
   width: { type: String, default: '420px' },
   gradientHeader: { type: Boolean, default: true },
@@ -33,10 +34,18 @@ onBeforeUnmount(() => window.removeEventListener('keydown', onKey))
           :style="{ width }"
         >
           <header :class="['ft-drawer__head', gradientHeader && 'ft-drawer__head--grad']">
-            <span class="ft-drawer__title">{{ title }}</span>
-            <div class="ft-drawer__actions">
-              <slot name="header-actions" />
-              <button type="button" class="ft-drawer__x" aria-label="Close" @click="close">✕</button>
+            <div class="ft-drawer__head-top">
+              <div class="ft-drawer__heading">
+                <span class="ft-drawer__title">{{ title }}</span>
+                <span v-if="subtitle" class="ft-drawer__subtitle">{{ subtitle }}</span>
+              </div>
+              <div class="ft-drawer__actions">
+                <slot name="header-actions" />
+                <button type="button" class="ft-drawer__x" aria-label="Close" @click="close">✕</button>
+              </div>
+            </div>
+            <div v-if="$slots['header-extra']" class="ft-drawer__head-extra">
+              <slot name="header-extra" />
             </div>
           </header>
           <div class="ft-drawer__body"><slot /></div>
@@ -70,8 +79,8 @@ onBeforeUnmount(() => window.removeEventListener('keydown', onKey))
 
 .ft-drawer__head {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
+  gap: var(--ft-space-4);
   padding: var(--ft-space-4) var(--ft-space-5);
   border-bottom: 1px solid var(--ft-border);
 }
@@ -80,8 +89,12 @@ onBeforeUnmount(() => window.removeEventListener('keydown', onKey))
   border-bottom: none;
   color: #fff;
 }
+.ft-drawer__head-top { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--ft-space-3); }
+.ft-drawer__heading { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
 .ft-drawer__title { font-family: var(--ft-font-display); font-size: var(--ft-text-lg); font-weight: var(--ft-weight-semibold); letter-spacing: -0.01em; }
-.ft-drawer__actions { display: flex; align-items: center; gap: var(--ft-space-2); }
+.ft-drawer__subtitle { font-size: var(--ft-text-xs); opacity: 0.8; }
+.ft-drawer__head-extra { width: 100%; }
+.ft-drawer__actions { display: flex; align-items: center; gap: var(--ft-space-2); flex: 0 0 auto; }
 .ft-drawer__x {
   width: 30px; height: 30px; border: none; border-radius: var(--ft-radius-sm);
   background: transparent; color: inherit; opacity: 0.8; cursor: pointer; font-size: 14px;
