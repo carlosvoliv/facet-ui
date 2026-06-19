@@ -74,12 +74,56 @@
 
   /* ── Elevation + type ────────────────────────────────────────────────── */
   --ft-card-shadow: 0 1px 1px rgba(16, 24, 40, 0.02), 0 10px 28px -12px rgba(16, 24, 40, 0.10), 0 30px 60px -28px rgba(16, 24, 40, 0.16);
-  --ft-radius: 16px;
+  /* ── Radius scale ────────────────────────────────────────────────────── */
+  --ft-radius-xs: 7px;
   --ft-radius-sm: 10px;
-  /* System-first type for an elegant, Apple-like feel; Inter as the loaded fallback. */
+  --ft-radius: 16px;
+  --ft-radius-lg: 20px;
+  --ft-radius-pill: 999px;
+
+  /* ── Spacing scale (4px base) ────────────────────────────────────────── */
+  --ft-space-1: 4px;
+  --ft-space-2: 8px;
+  --ft-space-3: 12px;
+  --ft-space-4: 16px;
+  --ft-space-5: 20px;
+  --ft-space-6: 24px;
+  --ft-space-8: 32px;
+  --ft-space-10: 40px;
+  --ft-space-12: 48px;
+
+  /* ── Type ────────────────────────────────────────────────────────────── */
+  /* System-first for an elegant, Apple-like feel; Inter as the loaded fallback. */
   --ft-font-display: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif;
   --ft-font-body: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif;
   --ft-font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  --ft-text-xs: 12px;
+  --ft-text-sm: 13px;
+  --ft-text-base: 14px;
+  --ft-text-md: 15px;
+  --ft-text-lg: 17px;
+  --ft-text-xl: 20px;
+  --ft-text-2xl: 24px;
+  --ft-text-3xl: 32px;
+  --ft-weight-regular: 400;
+  --ft-weight-medium: 550;
+  --ft-weight-semibold: 600;
+  --ft-weight-bold: 700;
+
+  /* ── Motion ──────────────────────────────────────────────────────────── */
+  --ft-ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --ft-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ft-dur-fast: 0.12s;
+  --ft-dur: 0.18s;
+  --ft-dur-slow: 0.3s;
+
+  /* ── Z-index scale ───────────────────────────────────────────────────── */
+  --ft-z-dropdown: 1000;
+  --ft-z-sticky: 1100;
+  --ft-z-drawer: 1200;
+  --ft-z-modal: 1300;
+  --ft-z-toast: 1400;
+  --ft-z-tooltip: 1500;
 }
 
 /* ──────────────────────────────────────────────────────────────────────────

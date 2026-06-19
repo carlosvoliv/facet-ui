@@ -74,7 +74,7 @@ onBeforeUnmount(() => window.removeEventListener('keydown', onKey))
 .ft-modal {
   position: fixed;
   inset: 0;
-  z-index: 1000;
+  z-index: var(--ft-z-modal);
   display: grid;
   place-items: center;
   padding: 24px;
