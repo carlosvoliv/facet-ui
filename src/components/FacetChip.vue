@@ -1,0 +1,35 @@
+<script setup>
+import FacetIcon from './FacetIcon.vue'
+
+const props = defineProps({
+  variant: { type: String, default: 'grey' }, // ok | err | blue | grey
+  icon: { type: String, default: '' }, // override; defaults per variant
+})
+const DEFAULT_ICON = { ok: 'check', err: 'x', blue: 'info', grey: 'clock' }
+const iconName = () => props.icon || DEFAULT_ICON[props.variant]
+</script>
+
+<template>
+  <span :class="['ft-chip', `ft-chip--${variant}`]">
+    <FacetIcon v-if="iconName()" :name="iconName()" :size="13" />
+    <slot />
+  </span>
+</template>
+
+<style scoped>
+.ft-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--ft-font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  padding: 4px 11px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+}
+.ft-chip--ok { background: var(--ft-chip-ok-bg); color: var(--ft-chip-ok-fg); border-color: var(--ft-chip-ok-line); }
+.ft-chip--err { background: var(--ft-chip-err-bg); color: var(--ft-chip-err-fg); border-color: var(--ft-chip-err-line); }
+.ft-chip--blue { background: var(--ft-chip-blue-bg); color: var(--ft-chip-blue-fg); border-color: var(--ft-chip-blue-line); }
+.ft-chip--grey { background: var(--ft-chip-grey-bg); color: var(--ft-chip-grey-fg); border-color: var(--ft-chip-grey-line); }
+</style>
