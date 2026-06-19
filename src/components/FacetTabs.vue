@@ -23,36 +23,44 @@ defineEmits(['update:modelValue'])
 </template>
 
 <style scoped>
+/* Segmented control: a recessed track with a raised, sliding active segment. */
 .ft-tabs {
   display: inline-flex;
-  gap: var(--ft-space-1);
-  border-bottom: 1px solid var(--ft-border);
+  gap: 3px;
+  padding: 3px;
+  background: var(--ft-neutral-bg);
+  border: 1px solid var(--ft-border);
+  border-radius: 12px;
 }
 .ft-tab {
-  position: relative;
   font-family: var(--ft-font-body);
-  font-size: var(--ft-text-base);
+  font-size: var(--ft-text-sm);
   font-weight: var(--ft-weight-medium);
+  letter-spacing: -0.005em;
   color: var(--ft-text-soft);
   background: transparent;
   border: none;
-  padding: var(--ft-space-3) var(--ft-space-4);
+  border-radius: 9px;
+  padding: 7px 16px;
   cursor: pointer;
-  transition: color var(--ft-dur) var(--ft-ease);
+  transition:
+    color var(--ft-dur) var(--ft-ease),
+    background var(--ft-dur) var(--ft-ease),
+    box-shadow var(--ft-dur) var(--ft-ease);
 }
-.ft-tab::after {
-  content: '';
-  position: absolute;
-  left: var(--ft-space-3);
-  right: var(--ft-space-3);
-  bottom: -1px;
-  height: 2px;
-  border-radius: 2px;
-  background: var(--ft-brand);
-  transform: scaleX(0);
-  transition: transform var(--ft-dur) var(--ft-ease-out);
+.ft-tab:hover {
+  color: var(--ft-text);
 }
-.ft-tab:hover { color: var(--ft-text); }
-.ft-tab--active { color: var(--ft-brand); }
-.ft-tab--active::after { transform: scaleX(1); }
+.ft-tab--active {
+  background: var(--ft-surface-base);
+  color: var(--ft-text);
+  font-weight: var(--ft-weight-semibold);
+  box-shadow:
+    0 1px 2px rgba(16, 24, 40, 0.12),
+    0 2px 6px rgba(16, 24, 40, 0.08);
+}
+.ft-tab:focus-visible {
+  outline: 2px solid var(--ft-brand);
+  outline-offset: 2px;
+}
 </style>
