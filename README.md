@@ -31,7 +31,8 @@ moment you need a second theme, you're editing every file. Facet inverts that:
 
 ```bash
 npm install
-npm run dev        # open the living styleguide + theme switcher
+npm run dev        # the living styleguide + theme switcher
+npm run storybook  # component docs: per-prop controls + theme toolbar
 ```
 
 Regenerate the theme CSS after editing palettes:
