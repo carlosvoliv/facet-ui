@@ -15,6 +15,13 @@ import FacetAlert from '../components/FacetAlert.vue'
 import FacetCard from '../components/FacetCard.vue'
 import FacetToggle from '../components/FacetToggle.vue'
 import FacetTable from '../components/FacetTable.vue'
+import FacetDrawer from '../components/FacetDrawer.vue'
+import FacetTabs from '../components/FacetTabs.vue'
+import FacetTooltip from '../components/FacetTooltip.vue'
+import FacetSpinner from '../components/FacetSpinner.vue'
+import FacetSkeleton from '../components/FacetSkeleton.vue'
+import FacetCheckbox from '../components/FacetCheckbox.vue'
+import FacetRadioGroup from '../components/FacetRadioGroup.vue'
 
 const theme = ref('')
 function setTheme(name) {
@@ -57,6 +64,10 @@ const role = ref('full-stack')
 const notify = ref(true)
 const modalOpen = ref(false)
 const dangerOpen = ref(false)
+const drawerOpen = ref(false)
+const tab = ref('overview')
+const agree = ref(true)
+const plan = ref('pro')
 
 const swatches = ['--ft-brand', '--ft-success', '--ft-error', '--ft-info', '--ft-warn', '--ft-kpi-accent']
 </script>
@@ -168,6 +179,53 @@ const swatches = ['--ft-brand', '--ft-success', '--ft-error', '--ft-info', '--ft
       </FacetTable>
     </section>
 
+    <section class="cols">
+      <FacetCard title="Tabs &amp; loading">
+        <FacetTabs
+          v-model="tab"
+          :tabs="[
+            { value: 'overview', label: 'Overview' },
+            { value: 'activity', label: 'Activity' },
+            { value: 'settings', label: 'Settings' },
+          ]"
+        />
+        <div style="margin-top: var(--ft-space-4)">
+          <div v-if="tab === 'overview'" class="stack">
+            <FacetSkeleton width="60%" height="18px" />
+            <FacetSkeleton />
+            <FacetSkeleton width="80%" />
+          </div>
+          <div v-else-if="tab === 'activity'" class="row">
+            <FacetSpinner :size="22" />
+            <span style="color: var(--ft-text-soft)">Loading activity…</span>
+          </div>
+          <div v-else style="color: var(--ft-text-soft)">Settings panel content.</div>
+        </div>
+      </FacetCard>
+
+      <FacetCard title="Selection &amp; overlays">
+        <div class="stack">
+          <FacetCheckbox v-model="agree" label="I agree to the terms" />
+          <FacetRadioGroup
+            v-model="plan"
+            :options="[
+              { value: 'free', label: 'Free' },
+              { value: 'pro', label: 'Pro' },
+              { value: 'team', label: 'Team' },
+            ]"
+          />
+          <div class="row">
+            <FacetTooltip label="Opens a side panel">
+              <FacetButton variant="ghost" @click="drawerOpen = true">Open drawer</FacetButton>
+            </FacetTooltip>
+            <FacetTooltip label="Tooltip on a chip" placement="bottom">
+              <FacetChip variant="blue">hover me</FacetChip>
+            </FacetTooltip>
+          </div>
+        </div>
+      </FacetCard>
+    </section>
+
     <section>
       <h2 class="lead">Tokens</h2>
       <div class="grid">
@@ -196,6 +254,17 @@ const swatches = ['--ft-brand', '--ft-success', '--ft-error', '--ft-info', '--ft
       This permanently deletes batch <strong>#020</strong>. This action cannot be undone.
     </p>
   </FacetModal>
+
+  <FacetDrawer v-model="drawerOpen" title="Batch #018">
+    <div class="stack">
+      <FacetAlert variant="info">Receivables batch details and registration status.</FacetAlert>
+      <FacetTimeline :events="events" />
+    </div>
+    <template #footer>
+      <FacetButton variant="ghost" @click="drawerOpen = false">Close</FacetButton>
+      <FacetButton variant="primary" @click="drawerOpen = false">Register</FacetButton>
+    </template>
+  </FacetDrawer>
 </template>
 
 <style scoped>
