@@ -18,6 +18,19 @@ const rgba = (hex, a) => {
   return `rgba(${r}, ${g}, ${b}, ${a})`
 }
 
+// f < 1 darkens, f > 1 lightens — used to add depth to header gradients.
+const shade = (hex, f) => {
+  const m = /^#?([0-9a-f]{2})([0-9a-f]{2})([0-9a-f]{2})$/i.exec(hex || '')
+  if (!m) return hex
+  return (
+    '#' +
+    [1, 2, 3]
+      .map((i) => Math.max(0, Math.min(255, Math.round(parseInt(m[i], 16) * f))))
+      .map((v) => v.toString(16).padStart(2, '0'))
+      .join('')
+  )
+}
+
 function tokens(c, dark) {
   const brand = c.accent || c.color4
   const brandStrong = c.color12 || c.color4 || brand
@@ -28,8 +41,8 @@ function tokens(c, dark) {
     '--ft-brand': brand,
     '--ft-brand-hover': c.color4 || brand,
     '--ft-brand-strong': brandStrong,
-    '--ft-header-grad': `linear-gradient(135deg, ${brand} 0%, ${brandStrong} 100%)`,
-    '--ft-header-grad-danger': `linear-gradient(135deg, ${c.color1} 0%, ${c.color9 || c.color1} 100%)`,
+    '--ft-header-grad': `linear-gradient(135deg, ${shade(brand, 0.8)} 0%, ${brandStrong} 100%)`,
+    '--ft-header-grad-danger': `linear-gradient(135deg, ${shade(c.color1, 0.78)} 0%, ${c.color9 || c.color1} 100%)`,
 
     '--ft-success': c.color2,
     '--ft-success-hover': c.color2,

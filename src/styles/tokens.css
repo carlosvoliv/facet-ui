@@ -17,8 +17,8 @@
   --ft-brand:            #4f46e5;
   --ft-brand-hover:      #4338ca;
   --ft-brand-strong:     #6366f1;
-  --ft-header-grad:        linear-gradient(135deg, #4f46e5 0%, #6366f1 100%);
-  --ft-header-grad-danger: linear-gradient(135deg, #b91c1c 0%, #dc2626 100%);
+  --ft-header-grad:        linear-gradient(135deg, #4338ca 0%, #7c83f4 100%);
+  --ft-header-grad-danger: linear-gradient(135deg, #991b1b 0%, #ef4444 100%);
 
   /* ── Semantics ───────────────────────────────────────────────────────── */
   --ft-success:          #15803d;
@@ -91,8 +91,8 @@
   --ft-brand:            #6366f1;
   --ft-brand-hover:      #818cf8;
   --ft-brand-strong:     #818cf8;
-  --ft-header-grad:        linear-gradient(135deg, #4338ca 0%, #6366f1 100%);
-  --ft-header-grad-danger: linear-gradient(135deg, #dc2626 0%, #f87171 100%);
+  --ft-header-grad:        linear-gradient(135deg, #4338ca 0%, #818cf8 100%);
+  --ft-header-grad-danger: linear-gradient(135deg, #b91c1c 0%, #fb7185 100%);
 
   --ft-success:          #22c55e;
   --ft-success-hover:    #16a34a;
