@@ -29,6 +29,7 @@ function tokens(c, dark) {
     '--ft-brand-hover': c.color4 || brand,
     '--ft-brand-strong': brandStrong,
     '--ft-header-grad': `linear-gradient(135deg, ${brand} 0%, ${brandStrong} 100%)`,
+    '--ft-header-grad-danger': `linear-gradient(135deg, ${c.color1} 0%, ${c.color9 || c.color1} 100%)`,
 
     '--ft-success': c.color2,
     '--ft-success-hover': c.color2,

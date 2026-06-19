@@ -103,7 +103,7 @@ onBeforeUnmount(() => window.removeEventListener('keydown', onKey))
   color: #fff;
 }
 .ft-modal__head--danger {
-  background: var(--ft-error);
+  background: var(--ft-header-grad-danger);
   border-bottom: none;
   color: #fff;
 }
