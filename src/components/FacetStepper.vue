@@ -46,7 +46,7 @@ const glyph = { done: '✓', error: '!', doing: '●', idle: '' }
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 5px;
+  gap: 8px;
   padding: 9px 6px;
   border: 1px solid;
   border-radius: var(--ft-radius-sm);
