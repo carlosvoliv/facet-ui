@@ -72,6 +72,19 @@ npm install facet-ui   # peer dep: vue ^3.4
 ```js
 import { FacetButton, FacetKpiCard, FacetDrawer, FacetTable } from 'facet-ui'
 import 'facet-ui/styles' // tokens + themes + component styles
+import 'facet-ui/base'   // optional: paints the page (body) from tokens so the
+                         // whole canvas re-themes — not just the components
+```
+
+> `facet-ui/styles` themes the components but is deliberately scoped: it does
+> **not** style your `<body>`. Import `facet-ui/base` (or set
+> `background: var(--ft-surface-base)` yourself) so the page canvas re-themes too.
+
+Need the list of available themes (e.g. to build a theme switcher)? It's exported
+as data:
+
+```js
+import themes from 'facet-ui/themes.json' // [{ name, label, dark, colors }, …]
 ```
 
 Build the package yourself with `npm run build:lib` (outputs ESM + UMD + CSS to `dist/`).

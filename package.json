@@ -23,8 +23,10 @@
       "require": "./dist/facet-ui.umd.cjs"
     },
     "./styles": "./dist/facet-ui.css",
+    "./base": "./src/styles/base.css",
     "./tokens.css": "./src/styles/tokens.css",
-    "./themes.css": "./src/styles/themes.css"
+    "./themes.css": "./src/styles/themes.css",
+    "./themes.json": "./src/themes.json"
   },
   "sideEffects": [
     "**/*.css"
