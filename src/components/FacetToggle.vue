@@ -38,6 +38,7 @@ defineEmits(['update:modelValue'])
   padding: 0;
 }
 .ft-toggle--on .ft-toggle__track { background: var(--ft-success); }
+.ft-toggle__track:focus-visible { outline: 2px solid var(--ft-brand); outline-offset: 2px; }
 .ft-toggle__thumb {
   position: absolute;
   top: 3px;
