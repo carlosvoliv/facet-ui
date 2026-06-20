@@ -1,5 +1,6 @@
 <script setup>
-import { watch, onBeforeUnmount } from 'vue'
+import { ref, toRef, useId } from 'vue'
+import { useDialog } from '../composables/useDialog.js'
 
 const props = defineProps({
   modelValue: { type: Boolean, required: true },
@@ -11,32 +12,32 @@ const props = defineProps({
 })
 const emit = defineEmits(['update:modelValue'])
 
+const panelRef = ref(null)
+const titleId = useId()
 const close = () => emit('update:modelValue', false)
-function onKey(e) {
-  if (e.key === 'Escape' && props.modelValue) close()
-}
-watch(
-  () => props.modelValue,
-  (open) => (open ? window.addEventListener('keydown', onKey) : window.removeEventListener('keydown', onKey)),
-)
-onBeforeUnmount(() => window.removeEventListener('keydown', onKey))
+
+// Escape, focus trap, focus return and scroll lock.
+useDialog(toRef(props, 'modelValue'), panelRef, close)
 </script>
 
 <template>
   <Teleport to="body">
     <Transition name="ft-drawer">
       <div v-if="modelValue" class="ft-drawer" @click.self="close">
-        <aside
+        <div
+          ref="panelRef"
           class="ft-drawer__panel"
           :class="`ft-drawer__panel--${side}`"
           role="dialog"
           aria-modal="true"
+          :aria-labelledby="title ? titleId : undefined"
+          tabindex="-1"
           :style="{ width }"
         >
           <header :class="['ft-drawer__head', gradientHeader && 'ft-drawer__head--grad']">
             <div class="ft-drawer__head-top">
               <div class="ft-drawer__heading">
-                <span class="ft-drawer__title">{{ title }}</span>
+                <span :id="titleId" class="ft-drawer__title">{{ title }}</span>
                 <span v-if="subtitle" class="ft-drawer__subtitle">{{ subtitle }}</span>
               </div>
               <div class="ft-drawer__actions">
@@ -50,7 +51,7 @@ onBeforeUnmount(() => window.removeEventListener('keydown', onKey))
           </header>
           <div class="ft-drawer__body"><slot /></div>
           <footer v-if="$slots.footer" class="ft-drawer__foot"><slot name="footer" /></footer>
-        </aside>
+        </div>
       </div>
     </Transition>
   </Teleport>
@@ -74,6 +75,7 @@ onBeforeUnmount(() => window.removeEventListener('keydown', onKey))
   color: var(--ft-text);
   box-shadow: var(--ft-card-shadow);
 }
+.ft-drawer__panel:focus { outline: none; }
 .ft-drawer__panel--right { margin-left: auto; }
 .ft-drawer__panel--left { margin-right: auto; }
 

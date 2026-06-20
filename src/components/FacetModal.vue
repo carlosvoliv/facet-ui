@@ -1,6 +1,7 @@
 <script setup>
-import { watch, onBeforeUnmount } from 'vue'
+import { ref, toRef, useId } from 'vue'
 import FacetButton from './FacetButton.vue'
+import { useDialog } from '../composables/useDialog.js'
 
 const props = defineProps({
   modelValue: { type: Boolean, required: true },
@@ -14,6 +15,9 @@ const props = defineProps({
 })
 const emit = defineEmits(['update:modelValue', 'confirm', 'cancel'])
 
+const panelRef = ref(null)
+const titleId = useId()
+
 function close() {
   emit('update:modelValue', false)
   emit('cancel')
@@ -21,31 +25,31 @@ function close() {
 function confirm() {
   emit('confirm')
 }
-function onKey(e) {
-  if (e.key === 'Escape' && props.modelValue) close()
-}
-watch(
-  () => props.modelValue,
-  (open) => {
-    if (open) window.addEventListener('keydown', onKey)
-    else window.removeEventListener('keydown', onKey)
-  },
-)
-onBeforeUnmount(() => window.removeEventListener('keydown', onKey))
+
+// Escape, focus trap, focus return and scroll lock.
+useDialog(toRef(props, 'modelValue'), panelRef, close)
 </script>
 
 <template>
   <Teleport to="body">
     <Transition name="ft-modal">
       <div v-if="modelValue" class="ft-modal" @click.self="close">
-        <div class="ft-modal__card" role="dialog" aria-modal="true" :style="{ maxWidth }">
+        <div
+          ref="panelRef"
+          class="ft-modal__card"
+          role="dialog"
+          aria-modal="true"
+          :aria-labelledby="title ? titleId : undefined"
+          tabindex="-1"
+          :style="{ maxWidth }"
+        >
           <header
             :class="[
               'ft-modal__head',
               tone === 'danger' ? 'ft-modal__head--danger' : gradientHeader && 'ft-modal__head--grad',
             ]"
           >
-            <span class="ft-modal__title">{{ title }}</span>
+            <span :id="titleId" class="ft-modal__title">{{ title }}</span>
             <div class="ft-modal__head-actions">
               <slot name="header-actions" />
               <button type="button" class="ft-modal__x" aria-label="Close" @click="close">✕</button>
@@ -59,8 +63,8 @@ onBeforeUnmount(() => window.removeEventListener('keydown', onKey))
           <footer class="ft-modal__foot">
             <slot name="footer">
               <FacetButton variant="ghost" @click="close">{{ cancelText }}</FacetButton>
-              <FacetButton :variant="tone === 'danger' ? 'danger' : 'primary'" :disabled="loading" @click="confirm">
-                {{ loading ? '…' : confirmText }}
+              <FacetButton :variant="tone === 'danger' ? 'danger' : 'primary'" :loading="loading" @click="confirm">
+                {{ confirmText }}
               </FacetButton>
             </slot>
           </footer>
@@ -89,6 +93,7 @@ onBeforeUnmount(() => window.removeEventListener('keydown', onKey))
   box-shadow: var(--ft-card-shadow);
   overflow: hidden;
 }
+.ft-modal__card:focus { outline: none; }
 .ft-modal__head {
   display: flex;
   align-items: center;
