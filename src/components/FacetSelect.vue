@@ -1,4 +1,9 @@
 <script setup>
+import { useId, useAttrs } from 'vue'
+
+// inheritAttrs:false so id/name/aria-* land on the <select>, not the <label>.
+defineOptions({ inheritAttrs: false })
+
 defineProps({
   modelValue: { type: [String, Number], default: '' },
   label: { type: String, default: '' },
@@ -6,13 +11,19 @@ defineProps({
   disabled: { type: Boolean, default: false },
 })
 defineEmits(['update:modelValue'])
+
+const attrs = useAttrs()
+const uid = useId()
+const selectId = attrs.id || uid
 </script>
 
 <template>
-  <label class="ft-field">
-    <span v-if="label" class="ft-field__label">{{ label }}</span>
+  <div class="ft-field">
+    <label v-if="label" class="ft-field__label" :for="selectId">{{ label }}</label>
     <div class="ft-select">
       <select
+        :id="selectId"
+        v-bind="$attrs"
         class="ft-select__el"
         :value="modelValue"
         :disabled="disabled"
@@ -22,7 +33,7 @@ defineEmits(['update:modelValue'])
       </select>
       <span class="ft-select__chevron" aria-hidden="true">▾</span>
     </div>
-  </label>
+  </div>
 </template>
 
 <style scoped>
