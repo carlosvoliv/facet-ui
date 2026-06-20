@@ -30,7 +30,7 @@ function setTheme(name) {
   else delete document.documentElement.dataset.theme
 }
 const presets = [
-  { name: '', label: 'Facet Light' },
+  { name: '', label: 'Facet · Auto (system)' },
   { name: 'facet-dark', label: 'Facet Dark' },
   ...themes.map((t) => ({ name: t.name, label: t.label })),
 ]
@@ -120,9 +120,9 @@ const swatches = ['--ft-brand', '--ft-success', '--ft-error', '--ft-info', '--ft
     <div class="hero__inner">
       <div class="hero__bar">
         <div class="eyebrow">facet-ui · design system</div>
-        <label class="picker">
+        <label class="picker" for="theme-picker">
           theme
-          <select :value="theme" @change="setTheme($event.target.value)">
+          <select id="theme-picker" name="theme" aria-label="Theme" :value="theme" @change="setTheme($event.target.value)">
             <option v-for="p in presets" :key="p.name" :value="p.name">{{ p.label }}</option>
           </select>
         </label>

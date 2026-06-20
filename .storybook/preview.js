@@ -4,7 +4,7 @@ import '../src/styles/base.css'
 import themes from '../src/themes.json'
 
 const themeItems = [
-  { value: '', title: 'Facet Light' },
+  { value: '', title: 'Facet · Auto (system)' },
   { value: 'facet-dark', title: 'Facet Dark' },
   ...themes.map((t) => ({ value: t.name, title: t.label })),
 ]
