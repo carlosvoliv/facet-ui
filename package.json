@@ -4,6 +4,11 @@
   "description": "A small, opinionated Vue 3 design system: a single source-of-truth token layer with full dark mode, plus a handful of polished, accessible components.",
   "type": "module",
   "license": "MIT",
+  "author": "Carlos E V Oliveira",
+  "repository": { "type": "git", "url": "git+https://github.com/carlosvoliv/facet-ui.git" },
+  "homepage": "https://github.com/carlosvoliv/facet-ui#readme",
+  "bugs": { "url": "https://github.com/carlosvoliv/facet-ui/issues" },
+  "engines": { "node": ">=18" },
   "files": [
     "dist",
     "src"
@@ -30,6 +35,9 @@
     "build": "vite build",
     "build:lib": "node scripts/build-themes.mjs && vite build --mode lib",
     "preview": "vite preview --port 4173",
+    "lint": "eslint .",
+    "test": "vitest run",
+    "test:watch": "vitest",
     "storybook": "storybook dev -p 6006 --no-open",
     "build-storybook": "storybook build"
   },
@@ -37,12 +45,20 @@
     "vue": "^3.4.0"
   },
   "devDependencies": {
+    "@eslint/js": "^10.0.1",
     "@storybook/addon-essentials": "^8.6.14",
     "@storybook/vue3": "^8.6.18",
     "@storybook/vue3-vite": "^8.6.18",
     "@vitejs/plugin-vue": "^5.1.4",
+    "@vue/test-utils": "^2.4.11",
+    "axe-core": "^4.12.1",
+    "eslint": "^10.5.0",
+    "eslint-plugin-vue": "^10.9.2",
+    "globals": "^17.6.0",
+    "jsdom": "^29.1.1",
     "storybook": "^8.6.18",
     "vite": "^5.4.10",
+    "vitest": "^4.1.9",
     "vue": "^3.5.12"
   },
   "keywords": [
