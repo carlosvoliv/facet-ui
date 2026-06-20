@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, useId, onBeforeUnmount } from 'vue'
 
 const props = defineProps({
   label: { type: String, required: true },
@@ -9,8 +9,9 @@ const props = defineProps({
 const triggerRef = ref(null)
 const visible = ref(false)
 const pos = ref({ top: 0, left: 0 })
+const tipId = useId()
 
-function show() {
+function place() {
   const el = triggerRef.value
   if (!el) return
   const r = el.getBoundingClientRect()
@@ -18,11 +19,27 @@ function show() {
     top: props.placement === 'bottom' ? r.bottom + 6 : r.top - 6,
     left: r.left + r.width / 2,
   }
-  visible.value = true
 }
+
+function show() {
+  place()
+  visible.value = true
+  // Fixed coords go stale on scroll/resize while the bubble is open.
+  window.addEventListener('scroll', place, true)
+  window.addEventListener('resize', place)
+}
+
 function hide() {
   visible.value = false
+  window.removeEventListener('scroll', place, true)
+  window.removeEventListener('resize', place)
 }
+
+function onKeydown(e) {
+  if (e.key === 'Escape') hide()
+}
+
+onBeforeUnmount(hide)
 </script>
 
 <template>
@@ -30,10 +47,12 @@ function hide() {
     ref="triggerRef"
     class="ft-tip"
     tabindex="0"
+    :aria-describedby="visible ? tipId : undefined"
     @mouseenter="show"
     @mouseleave="hide"
     @focusin="show"
     @focusout="hide"
+    @keydown="onKeydown"
   >
     <slot />
   </span>
@@ -41,6 +60,7 @@ function hide() {
     <Transition name="ft-tip">
       <span
         v-if="visible"
+        :id="tipId"
         :class="['ft-tip__bubble', `ft-tip__bubble--${placement}`]"
         :style="{ top: `${pos.top}px`, left: `${pos.left}px` }"
         role="tooltip"

@@ -1,21 +1,49 @@
 <script setup>
-defineProps({
+import { ref } from 'vue'
+
+const props = defineProps({
   modelValue: { type: [String, Number], required: true },
-  tabs: { type: Array, required: true }, // [{ value, label }]
+  tabs: { type: Array, required: true }, // [{ value, label, disabled? }]
 })
-defineEmits(['update:modelValue'])
+const emit = defineEmits(['update:modelValue'])
+
+const tabRefs = ref([])
+
+function select(value) {
+  if (value !== props.modelValue) emit('update:modelValue', value)
+}
+
+// Arrow-key roving focus per the WAI-ARIA tablist pattern.
+function onKeydown(e, index) {
+  const last = props.tabs.length - 1
+  let next
+  if (e.key === 'ArrowRight' || e.key === 'ArrowDown') next = index === last ? 0 : index + 1
+  else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') next = index === 0 ? last : index - 1
+  else if (e.key === 'Home') next = 0
+  else if (e.key === 'End') next = last
+  else return
+  e.preventDefault()
+  const tab = props.tabs[next]
+  tabRefs.value[next]?.focus()
+  if (tab) select(tab.value)
+}
 </script>
 
 <template>
   <div class="ft-tabs" role="tablist">
     <button
-      v-for="t in tabs"
+      v-for="(t, i) in tabs"
+      :id="`ft-tab-${t.value}`"
       :key="t.value"
+      :ref="(el) => (tabRefs[i] = el)"
       type="button"
       role="tab"
       :aria-selected="modelValue === t.value"
+      :tabindex="modelValue === t.value ? 0 : -1"
+      :disabled="t.disabled"
       :class="['ft-tab', { 'ft-tab--active': modelValue === t.value }]"
-      @click="$emit('update:modelValue', t.value)"
+      @click="select(t.value)"
+      @keydown="onKeydown($event, i)"
     >
       {{ t.label }}
     </button>
@@ -48,9 +76,10 @@ defineEmits(['update:modelValue'])
     background var(--ft-dur) var(--ft-ease),
     box-shadow var(--ft-dur) var(--ft-ease);
 }
-.ft-tab:hover {
+.ft-tab:hover:not(:disabled) {
   color: var(--ft-text);
 }
+.ft-tab:disabled { opacity: 0.45; cursor: not-allowed; }
 .ft-tab--active {
   background: var(--ft-surface-base);
   color: var(--ft-text);

@@ -14,6 +14,7 @@ defineProps({
           <th
             v-for="c in columns"
             :key="c.key"
+            scope="col"
             :style="{ textAlign: c.align || 'left' }"
           >
             {{ c.label }}
