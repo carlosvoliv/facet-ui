@@ -3,7 +3,9 @@
 defineProps({
   columns: { type: Array, required: true },
   rows: { type: Array, required: true },
+  clickable: { type: Boolean, default: false }, // rows emit `row-click` and show a pointer
 })
+defineEmits(['row-click'])
 </script>
 
 <template>
@@ -22,7 +24,12 @@ defineProps({
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(r, i) in rows" :key="i">
+        <tr
+          v-for="(r, i) in rows"
+          :key="i"
+          :class="{ 'ft-table__row--clickable': clickable }"
+          @click="clickable && $emit('row-click', r)"
+        >
           <td
             v-for="c in columns"
             :key="c.key"
@@ -66,6 +73,7 @@ defineProps({
 }
 .ft-table tbody tr:last-child td { border-bottom: none; }
 .ft-table tbody tr:hover { background: var(--ft-surface-1); }
+.ft-table tbody tr.ft-table__row--clickable { cursor: pointer; }
 
 /* Row actions: hidden until the row is hovered or keyboard-focused. */
 .ft-table tbody td :deep(.ft-row-actions) {
