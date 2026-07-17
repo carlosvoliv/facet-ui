@@ -549,5 +549,63 @@
       "color14": "#3e3e3e",
       "color15": "#000000"
     }
+  },
+  {
+    "name": "claude",
+    "label": "Claude",
+    "dark": false,
+    "colors": {
+      "accent": "#CC785C",
+      "cursor": "#CC785C",
+      "foreground": "#3D3929",
+      "background": "#F0EEE6",
+      "selection_foreground": "#3D3929",
+      "selection_background": "#DEDCD4",
+      "color0": "#DEDCD4",
+      "color1": "#BF4D43",
+      "color2": "#7A8B69",
+      "color3": "#BFA355",
+      "color4": "#6C8EA8",
+      "color5": "#9C8AA5",
+      "color6": "#6B9080",
+      "color7": "#D9D3C4",
+      "color8": "#3D3929",
+      "color9": "#D15F55",
+      "color10": "#687957",
+      "color11": "#AD9143",
+      "color12": "#5A7C96",
+      "color13": "#8A7893",
+      "color14": "#597E6E",
+      "color15": "#EAE8E0"
+    }
+  },
+  {
+    "name": "claude-dark",
+    "label": "Claude Dark",
+    "dark": true,
+    "colors": {
+      "accent": "#CC785C",
+      "cursor": "#CC785C",
+      "foreground": "#E8E6DC",
+      "background": "#292A20",
+      "selection_foreground": "#292A20",
+      "selection_background": "#D9A88C",
+      "color0": "#544A36",
+      "color1": "#DA6F62",
+      "color2": "#87C658",
+      "color3": "#DBBA69",
+      "color4": "#6EA6DA",
+      "color5": "#AC78CE",
+      "color6": "#5FD09F",
+      "color7": "#B8B3A3",
+      "color8": "#6B6656",
+      "color9": "#E28C82",
+      "color10": "#A2D677",
+      "color11": "#E3CA88",
+      "color12": "#8DBCE4",
+      "color13": "#C394DD",
+      "color14": "#7EE1B5",
+      "color15": "#EDEBE3"
+    }
   }
 ]
